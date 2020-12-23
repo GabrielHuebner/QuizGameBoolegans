@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class App extends Application {
 
     public static void main(String[] args) {
@@ -14,11 +16,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("layout.fxml"));  // only looks into /resources folder for files!
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("layout.fxml")));  // only looks into /resources folder for files!
 
         //URL url = new File("src/main/java/at/ac/fhcampuswien/boolegans/layout.fxml").toURI().toURL(); // another way to load fxml file - but not recommended
         //Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root);
 
         //Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
