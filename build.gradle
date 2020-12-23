@@ -15,7 +15,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-mainClassName = 'at.ac.fhcampuswien.boolegans.Apptest'
+mainClassName = 'at.ac.fhcampuswien.boolegans.App'
 
 javafx {
     version = "15.0.1"
