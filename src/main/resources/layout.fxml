@@ -14,5 +14,6 @@
         <Label fx:id="answerB" layoutX="370.0" layoutY="60.0" prefHeight="20.0" prefWidth="280.0" text="B :" textAlignment="CENTER" />
         <Label fx:id="answerC" layoutX="50.0" layoutY="100.0" prefHeight="20.0" prefWidth="280.0" text="C :" textAlignment="CENTER" />
         <Label fx:id="answerD" layoutX="370.0" layoutY="100.0" prefHeight="20.0" prefWidth="280.0" text="D :" textAlignment="CENTER" />
+      <Label fx:id="timer" layoutX="300.0" layoutY="170.0" prefHeight="20.0" prefWidth="100.0" text="Timer :" textAlignment="CENTER"/>
     </children>
 </Pane>
