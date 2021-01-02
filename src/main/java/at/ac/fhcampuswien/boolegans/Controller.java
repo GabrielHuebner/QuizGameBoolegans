@@ -17,12 +17,11 @@ import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
-
     // Alle Labels und Buttons die im FXML File enthalten sind werden hier angesprochen
     @FXML
     private Label question, answerA, answerB, answerC, answerD, timer;
     @FXML
-    private Button buttonA, buttonB, buttonC, buttonD;
+    private Button buttonA, buttonB, buttonC, buttonD, nextButton;
 
     private boolean isATrue, isBTrue, isCTrue, isDTrue;
     private int qCount = 0;
@@ -37,7 +36,6 @@ public class Controller implements Initializable{
     }
     String absolutePath = questionsFile.getAbsolutePath();
     Path pathQuestions = Paths.get(absolutePath);
-    //Path pathQuestions = Paths.get("C:\\Users\\Gabriel\\IdeaProjects\\QuizGameBoolegans\\src\\main\\resources\\questions.json");
     Questions[] questions = gson.fromJson(Files.newBufferedReader(pathQuestions, StandardCharsets.UTF_8), Questions[].class);
 
     public Controller() throws IOException, URISyntaxException {
@@ -56,7 +54,7 @@ public class Controller implements Initializable{
         answerC.setText(questions[qCount].getC());
         answerD.setText(questions[qCount].getD());
         //timer.setText(questions[0].getA());
-        switch (questions[0].getAnswer()) {
+        switch (questions[qCount].getAnswer()) {
             case "A" -> isATrue = true;
             case "B" -> isBTrue = true;
             case "C" -> isCTrue = true;
@@ -75,7 +73,6 @@ public class Controller implements Initializable{
         else{
             buttonA.setStyle("-fx-background-color: red;");
         }
-        nextQuestion();
     }
 
     @FXML
@@ -87,7 +84,6 @@ public class Controller implements Initializable{
         else{
             buttonB.setStyle("-fx-background-color: red;");
         }
-        nextQuestion();
     }
 
     @FXML
@@ -99,7 +95,6 @@ public class Controller implements Initializable{
         else{
             buttonC.setStyle("-fx-background-color: red;");
         }
-        nextQuestion();
     }
 
     @FXML
@@ -111,6 +106,9 @@ public class Controller implements Initializable{
         else{
             buttonD.setStyle("-fx-background-color: red;");
         }
+    }
+
+    public void buttonNextAction(){
         nextQuestion();
     }
 
@@ -143,11 +141,22 @@ public class Controller implements Initializable{
         buttonB.setStyle(null);
         buttonC.setStyle(null);
         buttonD.setStyle(null);
+        isATrue = false;
+        isBTrue = false;
+        isCTrue = false;
+        isDTrue = false;
 
         question.setText(questions[qCount].getQuestion());
         answerA.setText(questions[qCount].getA());
         answerB.setText(questions[qCount].getB());
         answerC.setText(questions[qCount].getC());
         answerD.setText(questions[qCount].getD());
+        switch (questions[qCount].getAnswer()) {
+            case "A" -> isATrue = true;
+            case "B" -> isBTrue = true;
+            case "C" -> isCTrue = true;
+            case "D" -> isDTrue = true;
+            default -> System.out.println("ERROR; NO ANSWER SET");
+        }
     }
 }
