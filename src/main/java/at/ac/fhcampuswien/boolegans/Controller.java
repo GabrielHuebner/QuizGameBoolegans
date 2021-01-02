@@ -16,14 +16,16 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
 
+    // Alle Labels und Buttons die im FXML File enthalten sind werden hier angesprochen
     @FXML
     private Label question, answerA, answerB, answerC, answerD, timer;
     @FXML
     private Button buttonA, buttonB, buttonC, buttonD;
 
     private boolean isATrue, isBTrue, isCTrue, isDTrue;
-    private int qCount = 1;
+    private int qCount = 0;
 
+    //Hier werden die Fragen und Antworten aus dem JSON File importiert
     Gson gson = new Gson();
     Path pathQuestions = Paths.get("C:\\Users\\Gabriel\\IdeaProjects\\QuizGameBoolegans\\src\\main\\resources\\questions.json");
     Questions[] questions = gson.fromJson(Files.newBufferedReader(pathQuestions, StandardCharsets.UTF_8), Questions[].class);
@@ -35,6 +37,7 @@ public class Controller implements Initializable{
         isDTrue = false;
     }
 
+    //Das erste Set von Frage und Antworten wird hier initialisiert
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         question.setText(questions[qCount].getQuestion());
@@ -42,8 +45,8 @@ public class Controller implements Initializable{
         answerB.setText(questions[qCount].getB());
         answerC.setText(questions[qCount].getC());
         answerD.setText(questions[qCount].getD());
-        timer.setText(questions[qCount].getA());
-        switch (questions[qCount].getAnswer()) {
+        //timer.setText(questions[0].getA());
+        switch (questions[0].getAnswer()) {
             case "A" -> isATrue = true;
             case "B" -> isBTrue = true;
             case "C" -> isCTrue = true;
@@ -52,6 +55,7 @@ public class Controller implements Initializable{
         }
     }
 
+    //Hier sind die jeweiligen Buttons zu finden, die Frabe eines Buttons ändert sich je nachdem ob die Antwort richtig war
     @FXML
     public void buttonAAction(javafx.event.ActionEvent actionEvent) {
         System.out.print("Apressed");
@@ -61,7 +65,7 @@ public class Controller implements Initializable{
         else{
             buttonA.setStyle("-fx-background-color: red;");
         }
-
+        nextQuestion();
     }
 
     @FXML
@@ -73,6 +77,7 @@ public class Controller implements Initializable{
         else{
             buttonB.setStyle("-fx-background-color: red;");
         }
+        nextQuestion();
     }
 
     @FXML
@@ -84,10 +89,11 @@ public class Controller implements Initializable{
         else{
             buttonC.setStyle("-fx-background-color: red;");
         }
+        nextQuestion();
     }
 
     @FXML
-    public void buttonDAction(javafx.event.ActionEvent actionEvent) {
+    public void buttonDAction() {
         System.out.print("Dpressed");
         if(isDTrue){
             buttonD.setStyle("-fx-background-color: green;");
@@ -95,29 +101,43 @@ public class Controller implements Initializable{
         else{
             buttonD.setStyle("-fx-background-color: red;");
         }
+        nextQuestion();
     }
 
-    public void setQuestionText(String text){
-        question.setText(text);
-    }
+    // Sobald ein Button gedrückt wird, wird nach einem delay die nächste Frage geladen und die Buttons zurückgesetzt
+    public void nextQuestion(){
 
-    public void setAText(String text){
-        answerA.setText(text);
-    }
+        if(isATrue){
+            buttonA.setStyle("-fx-background-color: green;");
+        }
+        else if(isBTrue){
+            buttonB.setStyle("-fx-background-color: green;");
+        }
+        else if(isCTrue){
+            buttonC.setStyle("-fx-background-color: green;");
+        }
+        else if(isDTrue){
+            buttonD.setStyle("-fx-background-color: green;");
+        }
 
-    public void setBText(String text){
-        answerB.setText(text);
-    }
 
-    public void setCText(String text){
-        answerC.setText(text);
-    }
+        if(qCount < questions.length - 1){
+            qCount++;
+        }
+        if(qCount >= questions.length - 1){
+            timer.setText("GAME FINISHED!");
+        }
 
-    public void setDText(String text){
-        answerD.setText(text);
-    }
 
-    public void setTimerText(String text){
-        timer.setText(text);
+        buttonA.setStyle(null);
+        buttonB.setStyle(null);
+        buttonC.setStyle(null);
+        buttonD.setStyle(null);
+
+        question.setText(questions[qCount].getQuestion());
+        answerA.setText(questions[qCount].getA());
+        answerB.setText(questions[qCount].getB());
+        answerC.setText(questions[qCount].getC());
+        answerD.setText(questions[qCount].getD());
     }
 }
