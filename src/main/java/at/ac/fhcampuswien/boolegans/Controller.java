@@ -24,8 +24,8 @@ public class Controller implements Initializable{
     private Button buttonA, buttonB, buttonC, buttonD, nextButton;
 
     private boolean isATrue, isBTrue, isCTrue, isDTrue;
-    private int qCount = 0;
-
+    private int qCount = 0, score = 0;
+    Player player = new Player();
     //Hier werden die Fragen und Antworten aus dem JSON File importiert
     Gson gson = new Gson();
     URL questionsURL = getClass().getClassLoader().getResource("questions.json");
@@ -53,7 +53,6 @@ public class Controller implements Initializable{
         answerB.setText(questions[qCount].getB());
         answerC.setText(questions[qCount].getC());
         answerD.setText(questions[qCount].getD());
-        //timer.setText(questions[0].getA());
         switch (questions[qCount].getAnswer()) {
             case "A" -> isATrue = true;
             case "B" -> isBTrue = true;
@@ -69,9 +68,25 @@ public class Controller implements Initializable{
         System.out.print("Apressed");
         if(isATrue){
             buttonA.setStyle("-fx-background-color: green;");
+            score++;
+            player.setScore(score);
         }
         else{
             buttonA.setStyle("-fx-background-color: red;");
+        }
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
+
+        if(isBTrue){
+            buttonB.setStyle("-fx-background-color: green;");
+        }
+        else if(isCTrue){
+            buttonC.setStyle("-fx-background-color: green;");
+        }
+        else if(isDTrue){
+            buttonD.setStyle("-fx-background-color: green;");
         }
     }
 
@@ -80,9 +95,24 @@ public class Controller implements Initializable{
         System.out.print("Bpressed");
         if(isBTrue){
             buttonB.setStyle("-fx-background-color: green;");
+            score++;
+            player.setScore(score);
         }
         else{
             buttonB.setStyle("-fx-background-color: red;");
+        }
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
+        if(isATrue){
+            buttonA.setStyle("-fx-background-color: green;");
+        }
+        else if(isCTrue){
+            buttonC.setStyle("-fx-background-color: green;");
+        }
+        else if(isDTrue){
+            buttonD.setStyle("-fx-background-color: green;");
         }
     }
 
@@ -91,9 +121,24 @@ public class Controller implements Initializable{
         System.out.print("Cpressed");
         if(isCTrue){
             buttonC.setStyle("-fx-background-color: green;");
+            score++;
+            player.setScore(score);
         }
         else{
             buttonC.setStyle("-fx-background-color: red;");
+        }
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
+        if(isATrue){
+            buttonA.setStyle("-fx-background-color: green;");
+        }
+        else if(isBTrue){
+            buttonB.setStyle("-fx-background-color: green;");
+        }
+        else if(isDTrue){
+            buttonD.setStyle("-fx-background-color: green;");
         }
     }
 
@@ -102,19 +147,16 @@ public class Controller implements Initializable{
         System.out.print("Dpressed");
         if(isDTrue){
             buttonD.setStyle("-fx-background-color: green;");
+            score++;
+            player.setScore(score);
         }
         else{
             buttonD.setStyle("-fx-background-color: red;");
         }
-    }
-
-    public void buttonNextAction(){
-        nextQuestion();
-    }
-
-    // Sobald ein Button gedrückt wird, wird nach einem delay die nächste Frage geladen und die Buttons zurückgesetzt
-    public void nextQuestion(){
-
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
         if(isATrue){
             buttonA.setStyle("-fx-background-color: green;");
         }
@@ -124,11 +166,14 @@ public class Controller implements Initializable{
         else if(isCTrue){
             buttonC.setStyle("-fx-background-color: green;");
         }
-        else if(isDTrue){
-            buttonD.setStyle("-fx-background-color: green;");
-        }
+    }
 
+    public void buttonNextAction(){
+        nextQuestion();
+    }
 
+    // Sobald ein Button gedrückt wird, wird nach einem delay die nächste Frage geladen und die Buttons zurückgesetzt
+    public void nextQuestion(){
         if(qCount < questions.length - 1){
             qCount++;
         }
@@ -136,6 +181,7 @@ public class Controller implements Initializable{
             timer.setText("GAME FINISHED!");
         }
 
+        System.out.println(player.getScore() + "");
 
         buttonA.setStyle(null);
         buttonB.setStyle(null);
@@ -145,6 +191,10 @@ public class Controller implements Initializable{
         isBTrue = false;
         isCTrue = false;
         isDTrue = false;
+        buttonA.setDisable(false);
+        buttonB.setDisable(false);
+        buttonC.setDisable(false);
+        buttonD.setDisable(false);
 
         question.setText(questions[qCount].getQuestion());
         answerA.setText(questions[qCount].getA());
