@@ -6,7 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -27,10 +29,18 @@ public class Controller implements Initializable{
 
     //Hier werden die Fragen und Antworten aus dem JSON File importiert
     Gson gson = new Gson();
-    Path pathQuestions = Paths.get("C:\\Users\\Gabriel\\IdeaProjects\\QuizGameBoolegans\\src\\main\\resources\\questions.json");
+    URL questionsURL = getClass().getClassLoader().getResource("questions.json");
+    File questionsFile;
+    {
+        assert questionsURL != null;
+        questionsFile = Paths.get(questionsURL.toURI()).toFile();
+    }
+    String absolutePath = questionsFile.getAbsolutePath();
+    Path pathQuestions = Paths.get(absolutePath);
+    //Path pathQuestions = Paths.get("C:\\Users\\Gabriel\\IdeaProjects\\QuizGameBoolegans\\src\\main\\resources\\questions.json");
     Questions[] questions = gson.fromJson(Files.newBufferedReader(pathQuestions, StandardCharsets.UTF_8), Questions[].class);
 
-    public Controller() throws IOException {
+    public Controller() throws IOException, URISyntaxException {
         isATrue = false;
         isBTrue = false;
         isCTrue = false;
