@@ -3,6 +3,7 @@ package at.ac.fhcampuswien.boolegans;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class App extends Application {
 
@@ -26,24 +26,26 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         //All of this is the first scene before you really start the game
+        //Here we add all Buttons, Labels that are in the first Scene in code, the second Scene is done with an fxml file
+        Label labelPName = new Label("Enter your Name here:");
+        labelPName.setAlignment(Pos.CENTER);
         TextField playerName = new TextField();
-        player.setName(playerName.getText());
-        Label label1 = new Label("Welcome to the Quiz Game");
-        Button button1 = new Button("Start Quiz Game");
-        button1.setOnAction(e -> primaryStage.setScene(sceneGame));
+        Button buttonSubmit = new Button("Submit");
+        buttonSubmit.setOnAction(e -> player.setName(playerName.getText()));
+        Label labelWelcome= new Label("Welcome to the Quiz Game");
+        Button buttonStart = new Button("Start Quiz Game");
+        buttonStart.setOnAction(e -> primaryStage.setScene(sceneGame));
 
+        //VBox for the first scene
         VBox layoutStart = new VBox((20));
-        layoutStart.getChildren().addAll(playerName,label1, button1);
+        layoutStart.getChildren().addAll(labelPName,playerName, buttonSubmit, labelWelcome, buttonStart);
         sceneStart = new Scene(layoutStart,200,200);
 
         //Here the next scene starts with the fxml file
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("layout.fxml")));  // only looks into /resources folder for files!
-
-        //URL url = new File("src/main/java/at/ac/fhcampuswien/boolegans/layout.fxml").toURI().toURL(); // another way to load fxml file - but not recommended
-        //Parent root = FXMLLoader.load(url);
         sceneGame = new Scene(root);
 
-        //Scene scene = new Scene(pane);
+        //Here the App starts with the first scene and the title Quiz Game
         primaryStage.setScene(sceneStart);
         primaryStage.setTitle("Quiz Game");
         primaryStage.show();

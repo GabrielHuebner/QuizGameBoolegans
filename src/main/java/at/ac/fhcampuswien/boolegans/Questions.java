@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.boolegans;
 
+//Diese Klasse ist dazu da um die gleiche Struktur, wie sie auch in dem JSON file zu finden ist, in Java zu haben
 public class Questions {
     private String question, a, b, c, d, answer;
 

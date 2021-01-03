@@ -19,13 +19,16 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable{
     // Alle Labels und Buttons die im FXML File enthalten sind werden hier angesprochen
     @FXML
-    private Label question, answerA, answerB, answerC, answerD, timer;
+    private Label question, answerA, answerB, answerC, answerD, playerScore;
     @FXML
     private Button buttonA, buttonB, buttonC, buttonD, nextButton;
 
     private boolean isATrue, isBTrue, isCTrue, isDTrue;
+
     private int qCount = 0, score = 0;
+
     Player player = new Player();
+
     //Hier werden die Fragen und Antworten aus dem JSON File importiert
     Gson gson = new Gson();
     URL questionsURL = getClass().getClassLoader().getResource("questions.json");
@@ -48,6 +51,7 @@ public class Controller implements Initializable{
     //Das erste Set von Frage und Antworten wird hier initialisiert
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        playerScore.setVisible(false);
         question.setText(questions[qCount].getQuestion());
         answerA.setText(questions[qCount].getA());
         answerB.setText(questions[qCount].getB());
@@ -64,8 +68,7 @@ public class Controller implements Initializable{
 
     //Hier sind die jeweiligen Buttons zu finden, die Frabe eines Buttons ändert sich je nachdem ob die Antwort richtig war
     @FXML
-    public void buttonAAction(javafx.event.ActionEvent actionEvent) {
-        System.out.print("Apressed");
+    public void buttonAAction() {
         if(isATrue){
             buttonA.setStyle("-fx-background-color: green;");
             score++;
@@ -91,8 +94,7 @@ public class Controller implements Initializable{
     }
 
     @FXML
-    public void buttonBAction(javafx.event.ActionEvent actionEvent) {
-        System.out.print("Bpressed");
+    public void buttonBAction() {
         if(isBTrue){
             buttonB.setStyle("-fx-background-color: green;");
             score++;
@@ -117,8 +119,7 @@ public class Controller implements Initializable{
     }
 
     @FXML
-    public void buttonCAction(javafx.event.ActionEvent actionEvent) {
-        System.out.print("Cpressed");
+    public void buttonCAction() {
         if(isCTrue){
             buttonC.setStyle("-fx-background-color: green;");
             score++;
@@ -144,7 +145,6 @@ public class Controller implements Initializable{
 
     @FXML
     public void buttonDAction() {
-        System.out.print("Dpressed");
         if(isDTrue){
             buttonD.setStyle("-fx-background-color: green;");
             score++;
@@ -169,18 +169,19 @@ public class Controller implements Initializable{
     }
 
     public void buttonNextAction(){
-        nextQuestion();
-    }
-
-    // Sobald ein Button gedrückt wird, wird nach einem delay die nächste Frage geladen und die Buttons zurückgesetzt
-    public void nextQuestion(){
         if(qCount < questions.length - 1){
             qCount++;
+            nextQuestion();
         }
-        if(qCount >= questions.length - 1){
-            timer.setText("GAME FINISHED!");
+        else if(qCount >= questions.length - 1){
+            playerScore.setVisible(true);
+            playerScore.setText("Game over! Player: " + player.getName() + " scored " + player.getScore() + "/" + questions.length + " points." );
         }
+    }
 
+    // Sobald der nextQuestion Button gedrückt wird werden alle Buttons auf die Standard Farben zurückgesetzt,
+    // wieder clickbar und die neuen Fragen werden geladen.
+    public void nextQuestion(){
         System.out.println(player.getScore() + "");
 
         buttonA.setStyle(null);
