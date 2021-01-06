@@ -47,6 +47,32 @@
     "c": "C: mollige Trapezkünstler",
     "d": "D: zuckerkranke Ritter",
     "answer": "B"
+  },
+  {
+    "question": "Question: Was ist mit 30 Metern die tiefste U-bahn Station in Wien?",
+    "a": "A: Donauinsel",
+    "b": "B: Altes Landgut",
+    "c": "C: Stephansplatz",
+    "d": "D: Dresdner Straße",
+    "answer": "B"
+  },
+
+  {
+    "question": "Question: Wie heißt die Lehre vom Satzbau?",
+    "a": "A: Syntax",
+    "b": "B: Semantik",
+    "c": "C: Konjunktion",
+    "d": "D: Grammatik",
+    "answer": "A"
+  },
+
+  {
+    "question": "Question: Welche Nüsse werden zur Herstellung von Marzipan verwendet?",
+    "a": "A: Paranüsse",
+    "b": "B: Walnüsse",
+    "c": "C: Kokosnüsse",
+    "d": "D: Mandeln",
+    "answer": "D"
   }
 ]
 
