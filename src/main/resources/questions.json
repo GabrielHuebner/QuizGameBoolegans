@@ -30,6 +30,14 @@
     "c": "C: 4",
     "d": "D: 7",
     "answer": "D"
+  },
+  {
+    "question": "Question: Labskaus war ein typisches Gericht für ...? ",
+    "a": "A: vegetarische Nomaden",
+    "b": "B: zahnlose Seefahrer",
+    "c": "C: mollige Trapezkünstler",
+    "d": "D: zuckerkranke Ritter",
+    "answer": "B"
   }
 ]
 
