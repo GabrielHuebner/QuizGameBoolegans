@@ -207,7 +207,7 @@ public class Controller implements Initializable{
             case "B" -> isBTrue = true;
             case "C" -> isCTrue = true;
             case "D" -> isDTrue = true;
-            default -> System.out.println("ERROR; NO ANSWER SET");
+            default -> System.out.println("ERROR" + "; NO ANSWER SET");
         }
     }
 }
