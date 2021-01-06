@@ -30,6 +30,15 @@
     "c": "C: 4",
     "d": "D: 7",
     "answer": "D"
+  },
+
+  {
+    "question": "Question: Was ist die kürzeste Straße Wiens?",
+    "a": "A: Mariahilferstraße",
+    "b": "B: Laaerbergstraße",
+    "c": "C: Lange Gasse",
+    "d": "D: Irisgasse",
+    "answer": "D"
   }
 ]
 
