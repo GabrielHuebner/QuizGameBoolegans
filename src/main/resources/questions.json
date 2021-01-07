@@ -121,6 +121,7 @@
     "d": "D: Gefangenen",
     "answer": "D"
   },
+
   {
     "question": "Question: Wann kam der erste Star Wars Film ins Kino?",
     "a": "A: 1993",
@@ -129,6 +130,7 @@
     "d": "D: 1989",
     "answer": "C"
   },
+
   {
     "question": "Question: 1+1?",
     "a": "A: 3",
@@ -153,7 +155,7 @@
     "a": "A: Josef Siegfried",
     "b": "B: Jürgen Siegismund",
     "c": "C: Johann Sebastian",
-    "d": "D: Jochen Siom",
+    "d": "D: Jochen Simon",
     "answer": "C"
   },
   {
@@ -164,6 +166,16 @@
     "d": "D: Japan",
     "answer": "A"
   },
+
+  {
+    "question": "Question: Welcher dieser Charaktere war nie einer von Batmans 'Robins'?",
+    "a": "A: Dick Grayson",
+    "b": "B: Jason Todd",
+    "c": "C: Alfred Pennyworth",
+    "d": "D: Damian Wayne",
+    "answer": "C"
+  },
+
   {
     "question": "Question: In der Japanische Kunstform „Dorodango“ formt man glänzende Bälle aus…?",
     "a": "A: Ton",
