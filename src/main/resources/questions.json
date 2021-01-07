@@ -19,6 +19,15 @@
     "answer": "D"
   },
   {
+    "question": "Question: Welche Schauspielerin spielt die Hauptrolle in den ersten 'Alien' Filmen?",
+    "a": "A: Kirsten Dunst",
+    "b": "B: Maggie Smith",
+    "c": "C: Sigourney Weaver",
+    "d": "D: Natalie Portman",
+    "answer": "C"
+  },
+
+  {
     "question": "Question: Labskaus war ein typisches Gericht für ...? ",
     "a": "A: vegetarische Nomaden",
     "b": "B: zahnlose Seefahrer",
@@ -52,6 +61,16 @@
     "d": "D: Mandeln",
     "answer": "D"
   },
+
+  {
+    "question": "Question: Was ist der Name von Thors Hammer?",
+    "a": "A: Mirmir",
+    "b": "B: Mjolnir",
+    "c": "C: Huginn",
+    "d": "D: Aesir",
+    "answer": "B"
+  },
+
   {
     "question": "Question: Wer belagerte 1683 Wien?",
     "a": "A: Russen",
@@ -76,6 +95,16 @@
     "d": "D: 7",
     "answer": "D"
   },
+
+  {
+    "question": "Wie lautet der Name des Heimatplaneten der Klingonen?",
+    "a": "A: Klingonia",
+    "b": "B: Qo'noS",
+    "c": "C: Anakreon",
+    "d": "D: Krypton",
+    "answer": "B"
+  },
+
   {
     "question": "Question: Wer schrieb „Die Leiden des jungen Werthers?",
     "a": "A: Goethe",
@@ -92,7 +121,14 @@
     "d": "D: Gefangenen",
     "answer": "D"
   },
-
+  {
+    "question": "Question: Wann kam der erste Star Wars Film ins Kino?",
+    "a": "A: 1993",
+    "b": "B: 1986",
+    "c": "C: 1977",
+    "d": "D: 1989",
+    "answer": "C"
+  },
   {
     "question": "Question: 1+1?",
     "a": "A: 3",
@@ -135,6 +171,32 @@
     "c": "C: Holz",
     "d": "D: Gold",
     "answer": "B"
+  },
+  {
+    "question": "Question: Was verlor Luke Skywalker beim Kampf gegen Darth Vader?",
+    "a": "A: Seinen rechten Arm",
+    "b": "B: Sein Laserschwert",
+    "c": "C: Seine Gabe die Macht einzusetzen",
+    "d": "D: Sein linkes Auge",
+    "answer": "B"
+  },
+
+  {
+    "question": "Question: Wer Schuf eine Serie von Stilleben mit Sonnenblumen?",
+    "a": "A: Pablo Picasso",
+    "b": "B: Salvador Dali",
+    "c": "C: Vincent van Gogh",
+    "d": "D: Joan Miro",
+    "answer": "B"
+  },
+
+  {
+    "question": "Question: In welcher Sprache wird der Nachname vor den Vornamen geschrieben?",
+    "a": "A: Spanisch",
+    "b": "B: Deutsch",
+    "c": "C: Italienisch",
+    "d": "D: Chinesisch",
+    "answer": "D"
   }
 ]
 
