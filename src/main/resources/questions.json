@@ -1,20 +1,5 @@
 [
-  {
-    "question": "Question: 1+1?",
-    "a": "A: 3",
-    "b": "B: 2",
-    "c": "C: 4",
-    "d": "D: 7",
-    "answer": "B"
-  },
-  {
-    "question": "Question: 1+2?",
-    "a": "A: 3",
-    "b": "B: 2",
-    "c": "C: 4",
-    "d": "D: 7",
-    "answer": "A"
-  },
+
   {
     "question": "Question: 1+3?",
     "a": "A: 3",
@@ -23,14 +8,7 @@
     "d": "D: 7",
     "answer": "C"
   },
-  {
-    "question": "Question: 5+2?",
-    "a": "A: 3",
-    "b": "B: 2",
-    "c": "C: 4",
-    "d": "D: 7",
-    "answer": "D"
-  },
+
 
   {
     "question": "Question: Was ist die kürzeste Straße Wiens?",
@@ -73,6 +51,90 @@
     "c": "C: Kokosnüsse",
     "d": "D: Mandeln",
     "answer": "D"
+  },
+  {
+    "question": "Question: Wer belagerte 1683 Wien?",
+    "a": "A: Russen",
+    "b": "B: Deutsche",
+    "c": "C: Türken",
+    "d": "D: Hunnen",
+    "answer": "C"
+  },
+  {
+    "question": "Question: Wie nennt man die äußerste Schicht der Haut?",
+    "a": "A: Endogenum",
+    "b": "B: Epidermis",
+    "c": "C: Epizentrum",
+    "d": "D: Subcutis",
+    "answer": "B"
+  },
+  {
+    "question": "Question: 5+2?",
+    "a": "A: 3",
+    "b": "B: 2",
+    "c": "C: 4",
+    "d": "D: 7",
+    "answer": "D"
+  },
+  {
+    "question": "Question: Wer schrieb „Die Leiden des jungen Werthers?",
+    "a": "A: Goethe",
+    "b": "B: Shakespeare",
+    "c": "C: Zweig",
+    "d": "D: Nestroy",
+    "answer": "A"
+  },
+  {
+    "question": "Die Seufzer Brücke in Venedig is benannt nach dem Seufzer der…?",
+    "a": "A: Briefträger",
+    "b": "B: Gondolieri",
+    "c": "C: Päpste",
+    "d": "D: Gefangenen",
+    "answer": "D"
+  },
+
+  {
+    "question": "Question: 1+1?",
+    "a": "A: 3",
+    "b": "B: 2",
+    "c": "C: 4",
+    "d": "D: 7",
+    "answer": "B"
+  },
+
+  {
+    "question": "Question: Der Krakatau ist ein Vulkan in…?",
+    "a": "A: Sri Lanka",
+    "b": "B: Madagaskar",
+    "c": "C: Indonesien",
+    "d": "D: Dominikanische Republik",
+    "answer": "C"
+  },
+
+
+  {
+    "question": "Wofür stehen die Initialen J.S.Bach?",
+    "a": "A: Josef Siegfried",
+    "b": "B: Jürgen Siegismund",
+    "c": "C: Johann Sebastian",
+    "d": "D: Jochen Siom",
+    "answer": "C"
+  },
+  {
+    "question": "Question: Wo wurde der Autohersteller Renault gegründet?",
+    "a": "A: Frankreich",
+    "b": "B: Deutschland",
+    "c": "C: Italien",
+    "d": "D: Japan",
+    "answer": "A"
+  },
+  {
+    "question": "Question: In der Japanische Kunstform „Dorodango“ formt man glänzende Bälle aus…?",
+    "a": "A: Ton",
+    "b": "B: Gatsch",
+    "c": "C: Holz",
+    "d": "D: Gold",
+    "answer": "B"
   }
 ]
 
