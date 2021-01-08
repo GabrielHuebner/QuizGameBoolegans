@@ -141,6 +141,15 @@
   },
 
   {
+    "question": "Question: 49.Which one of the following is a process synchronization tool??",
+    "a": "A: Mutex",
+    "b": "B: Thread",
+    "c": "C: Pipe",
+    "d": "D: Socket",
+    "answer": "A"
+  },
+
+  {
     "question": "Question: Der Krakatau ist ein Vulkan in…?",
     "a": "A: Sri Lanka",
     "b": "B: Madagaskar",
