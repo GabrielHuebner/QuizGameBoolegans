@@ -20,26 +20,26 @@ public class App extends Application {
 
     public static void main(String[] args){
         launch(args);
-    }
+    } // here is the main- function
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         //All of this is the first scene before you really start the game
         //Here we add all Buttons, Labels that are in the first Scene in code, the second Scene is done with an fxml file
-        Label labelPName = new Label("Enter your Name here:");
-        labelPName.setAlignment(Pos.CENTER);
-        TextField playerName = new TextField();
-        Button buttonSubmit = new Button("Submit");
-        buttonSubmit.setOnAction(e -> player.setName(playerName.getText()));
-        Label labelWelcome= new Label("Welcome to the Quiz Game");
-        Button buttonStart = new Button("Start Quiz Game");
-        buttonStart.setOnAction(e -> primaryStage.setScene(sceneGame));
+        Label labelPName = new Label("Enter your Name here:");      // Text: Aufforderung Namen einzugeben
+        labelPName.setAlignment(Pos.CENTER);        // Position soll zentral sein
+        TextField playerName = new TextField();     // Textfeld fuer Namenseingabe
+        Button buttonSubmit = new Button("Submit"); // Button-Befehl für submit
+        buttonSubmit.setOnAction(e -> player.setName(playerName.getText())); // Name des Players wird eingelesen und gespeichert
+        Label labelWelcome= new Label("Welcome to the Quiz Game");      // Text
+        Button buttonStart = new Button("Start Quiz Game");         // Button-Benennung fuer Quizstart
+        buttonStart.setOnAction(e -> primaryStage.setScene(sceneGame)); // wenn Button gedrueckt wird soll Quiz starten
 
         //VBox for the first scene
         VBox layoutStart = new VBox((20));
-        layoutStart.getChildren().addAll(labelPName,playerName, buttonSubmit, labelWelcome, buttonStart);
-        sceneStart = new Scene(layoutStart,200,200);
+        layoutStart.getChildren().addAll(labelPName,playerName, buttonSubmit, labelWelcome, buttonStart);  // alles was auf dem Start-Layout angezeigt werden soll
+        sceneStart = new Scene(layoutStart,200,200);    //Maße: 200x200
 
         //Here the next scene starts with the fxml file
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("layout.fxml")));  // only looks into /resources folder for files!
