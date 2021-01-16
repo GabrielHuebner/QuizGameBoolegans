@@ -27,6 +27,21 @@ public class Controller implements Initializable{
 
     private int qCount = 0, score = 0;
 
+    public void setText(){
+        question.setText(questions[qCount].getQuestion());
+        answerA.setText(questions[qCount].getA());
+        answerB.setText(questions[qCount].getB());
+        answerC.setText(questions[qCount].getC());
+        answerD.setText(questions[qCount].getD());
+        switch (questions[qCount].getAnswer()) {            // richtige Antwort Nummer [laufende Nummer] von questions abrufen
+            case "A" -> isATrue = true;                     // und die richtige Antwort auf "true" setzen
+            case "B" -> isBTrue = true;
+            case "C" -> isCTrue = true;
+            case "D" -> isDTrue = true;
+            default -> System.out.println("ERROR; NO ANSWER SET");
+        }
+    }
+
     Player player = new Player();       //Name und Score
 
     //Hier werden die Fragen und Antworten aus dem JSON File importiert
@@ -53,18 +68,9 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         playerScore.setVisible(false);                      // Score wird (noch) nicht angezeigt; erst zum Schluss bei ButtonNextAction
-        question.setText(questions[qCount].getQuestion());
-        answerA.setText(questions[qCount].getA());
-        answerB.setText(questions[qCount].getB());
-        answerC.setText(questions[qCount].getC());
-        answerD.setText(questions[qCount].getD());
-        switch (questions[qCount].getAnswer()) {            // richtige Antwort Nummer [laufende Nummer] von questions abrufen
-            case "A" -> isATrue = true;                     // und die richtige Antwort auf "true" setzen
-            case "B" -> isBTrue = true;
-            case "C" -> isCTrue = true;
-            case "D" -> isDTrue = true;
-            default -> System.out.println("ERROR; NO ANSWER SET");
-        }
+
+        setText();
+
     }
 
     //Hier sind die jeweiligen Buttons zu finden, die Frabe eines Buttons ändert sich je nachdem ob die Antwort richtig war
@@ -203,17 +209,6 @@ public class Controller implements Initializable{
         buttonC.setDisable(false);
         buttonD.setDisable(false);
 
-        question.setText(questions[qCount].getQuestion());  // dasselbe wie Zeile 54- 68
-        answerA.setText(questions[qCount].getA());          // warum diese Wiederholung?
-        answerB.setText(questions[qCount].getB());
-        answerC.setText(questions[qCount].getC());
-        answerD.setText(questions[qCount].getD());
-        switch (questions[qCount].getAnswer()) {
-            case "A" -> isATrue = true;
-            case "B" -> isBTrue = true;
-            case "C" -> isCTrue = true;
-            case "D" -> isDTrue = true;
-            default -> System.out.println("ERROR" + "; NO ANSWER SET");
-        }
+       setText();
     }
 }
