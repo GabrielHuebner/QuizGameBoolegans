@@ -27,21 +27,6 @@ public class Controller implements Initializable{
 
     private int qCount = 0, score = 0;
 
-    public void setText(){
-        question.setText(questions[qCount].getQuestion());
-        answerA.setText(questions[qCount].getA());
-        answerB.setText(questions[qCount].getB());
-        answerC.setText(questions[qCount].getC());
-        answerD.setText(questions[qCount].getD());
-        switch (questions[qCount].getAnswer()) {            // richtige Antwort Nummer [laufende Nummer] von questions abrufen
-            case "A" -> isATrue = true;                     // und die richtige Antwort auf "true" setzen
-            case "B" -> isBTrue = true;
-            case "C" -> isCTrue = true;
-            case "D" -> isDTrue = true;
-            default -> System.out.println("ERROR; NO ANSWER SET");
-        }
-    }
-
     Player player = new Player();       //Name und Score
 
     //Hier werden die Fragen und Antworten aus dem JSON File importiert
@@ -68,115 +53,73 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         playerScore.setVisible(false);                      // Score wird (noch) nicht angezeigt; erst zum Schluss bei ButtonNextAction
-
         setText();
+    }
 
+    public void setText(){
+        question.setText(questions[qCount].getQuestion());
+        answerA.setText(questions[qCount].getA());
+        answerB.setText(questions[qCount].getB());
+        answerC.setText(questions[qCount].getC());
+        answerD.setText(questions[qCount].getD());
+        switch (questions[qCount].getAnswer()) {            // richtige Antwort Nummer [laufende Nummer] von questions abrufen
+            case "A" -> isATrue = true;                     // und die richtige Antwort auf "true" setzen
+            case "B" -> isBTrue = true;
+            case "C" -> isCTrue = true;
+            case "D" -> isDTrue = true;
+            default -> System.out.println("ERROR; NO ANSWER SET");
+        }
+    }
+
+    @FXML
+    public void buttonActions(boolean a, boolean b, boolean c, boolean d, Button aB, Button bB, Button cB, Button dB){
+        if(a){
+            aB.setStyle("-fx-background-color: green;");       // wenn Button A angeklickt wurde und auch die richtige Antwort ist, dann Button gruen markieren
+            score++;                                                // da richtig: kann score um 1 erhöht werden
+            player.setScore(score);                                 // aktueller Punktestand (score) wird bei player gesetzt
+        }
+        else{
+           aB.setStyle("-fx-background-color: red;");         // wenn A "false" --> button red (unten wird der button mit richtiger Antwort gruen gesetzt)
+        }
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
+
+        if(b){
+            bB.setStyle("-fx-background-color: green;");       // sollte der falsche Button angeklickt worden sein
+        }                                                           // dann den richtigen Button gruen markieren
+        else if(c){
+            cB.setStyle("-fx-background-color: green;");
+        }
+        else if(d){
+            dB.setStyle("-fx-background-color: green;");
+        }
     }
 
     //Hier sind die jeweiligen Buttons zu finden, die Frabe eines Buttons ändert sich je nachdem ob die Antwort richtig war
     //button A
     @FXML
     public void buttonAAction() {
-        if(isATrue){
-            buttonA.setStyle("-fx-background-color: green;");       // wenn Button A angeklickt wurde und auch die richtige Antwort ist, dann Button gruen markieren
-            score++;                                                // da richtig: kann score um 1 erhöht werden
-            player.setScore(score);                                 // aktueller Punktestand (score) wird bei player gesetzt
-        }
-        else{
-            buttonA.setStyle("-fx-background-color: red;");         // wenn A "false" --> button red (unten wird der button mit richtiger Antwort gruen gesetzt)
-        }
-        buttonA.setDisable(true);
-        buttonB.setDisable(true);
-        buttonC.setDisable(true);
-        buttonD.setDisable(true);
-
-        if(isBTrue){
-            buttonB.setStyle("-fx-background-color: green;");       // sollte der falsche Button angeklickt worden sein
-        }                                                           // dann den richtigen Button gruen markieren
-        else if(isCTrue){
-            buttonC.setStyle("-fx-background-color: green;");
-        }
-        else if(isDTrue){
-            buttonD.setStyle("-fx-background-color: green;");
-        }
+        buttonActions(isATrue,isBTrue,isCTrue,isDTrue,buttonA,buttonB,buttonC,buttonD);
     }
 
     //button B
     @FXML
     public void buttonBAction() {
-        if(isBTrue){
-            buttonB.setStyle("-fx-background-color: green;");
-            score++;
-            player.setScore(score);
-        }
-        else{
-            buttonB.setStyle("-fx-background-color: red;");
-        }
-        buttonA.setDisable(true);
-        buttonB.setDisable(true);
-        buttonC.setDisable(true);
-        buttonD.setDisable(true);
-        if(isATrue){
-            buttonA.setStyle("-fx-background-color: green;");
-        }
-        else if(isCTrue){
-            buttonC.setStyle("-fx-background-color: green;");
-        }
-        else if(isDTrue){
-            buttonD.setStyle("-fx-background-color: green;");
-        }
+        buttonActions(isBTrue,isATrue,isCTrue,isCTrue,buttonB,buttonA,buttonC,buttonD);
     }
 
     //button C
     @FXML
     public void buttonCAction() {
-        if(isCTrue){
-            buttonC.setStyle("-fx-background-color: green;");
-            score++;
-            player.setScore(score);
-        }
-        else{
-            buttonC.setStyle("-fx-background-color: red;");
-        }
-        buttonA.setDisable(true);
-        buttonB.setDisable(true);
-        buttonC.setDisable(true);
-        buttonD.setDisable(true);
-        if(isATrue){
-            buttonA.setStyle("-fx-background-color: green;");
-        }
-        else if(isBTrue){
-            buttonB.setStyle("-fx-background-color: green;");
-        }
-        else if(isDTrue){
-            buttonD.setStyle("-fx-background-color: green;");
-        }
+       buttonActions(isCTrue,isATrue,isBTrue,isDTrue,buttonC,buttonA,buttonB,buttonD);
     }
 
     //button D
     @FXML
     public void buttonDAction() {
-        if(isDTrue){
-            buttonD.setStyle("-fx-background-color: green;");
-            score++;
-            player.setScore(score);
-        }
-        else{
-            buttonD.setStyle("-fx-background-color: red;");
-        }
-        buttonA.setDisable(true);       // Antwort-Button kann nicht mehr angeklickt werden
-        buttonB.setDisable(true);
-        buttonC.setDisable(true);
-        buttonD.setDisable(true);
-        if(isATrue){
-            buttonA.setStyle("-fx-background-color: green;");
-        }
-        else if(isBTrue){
-            buttonB.setStyle("-fx-background-color: green;");
-        }
-        else if(isCTrue){
-            buttonC.setStyle("-fx-background-color: green;");
-        }
+       buttonActions(isDTrue,isATrue,isBTrue,isCTrue,buttonD,buttonA,buttonB,buttonC);
     }
 
 
@@ -194,8 +137,6 @@ public class Controller implements Initializable{
     // Sobald der nextQuestion Button gedrückt wird werden alle Buttons auf die Standard Farben zurückgesetzt,
     // wieder clickbar und die neuen Fragen werden geladen.
     public void nextQuestion(){
-        System.out.println(player.getScore() + "");
-
         buttonA.setStyle(null);     // Button-Farben werden wieder ausgegraut
         buttonB.setStyle(null);
         buttonC.setStyle(null);
@@ -209,6 +150,6 @@ public class Controller implements Initializable{
         buttonC.setDisable(false);
         buttonD.setDisable(false);
 
-       setText();
+        setText();
     }
 }
