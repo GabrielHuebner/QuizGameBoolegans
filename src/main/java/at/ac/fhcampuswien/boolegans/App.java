@@ -37,7 +37,7 @@ public class App extends Application {
         buttonStart.setOnAction(e -> primaryStage.setScene(sceneGame)); // wenn Button gedrueckt wird soll Quiz starten
 
         //VBox for the first scene
-        VBox layoutStart = new VBox((20));
+        VBox layoutStart = new VBox((20));                              // spacing, Abstände
         layoutStart.getChildren().addAll(labelPName,playerName, buttonSubmit, labelWelcome, buttonStart);  // alles was auf dem Start-Layout angezeigt werden soll
         sceneStart = new Scene(layoutStart,200,200);    //Maße: 200x200
 

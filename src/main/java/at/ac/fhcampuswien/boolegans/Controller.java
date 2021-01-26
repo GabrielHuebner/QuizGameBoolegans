@@ -81,7 +81,7 @@ public class Controller implements Initializable{
         else{
            aB.setStyle("-fx-background-color: red;");         // wenn A "false" --> button red (unten wird der button mit richtiger Antwort gruen gesetzt)
         }
-        buttonA.setDisable(true);
+        buttonA.setDisable(true);                             // jzt kann ich voruebergehend keine Buttons mehr klicken
         buttonB.setDisable(true);
         buttonC.setDisable(true);
         buttonD.setDisable(true);
@@ -97,7 +97,7 @@ public class Controller implements Initializable{
         }
     }
 
-    //Hier sind die jeweiligen Buttons zu finden, die Frabe eines Buttons ändert sich je nachdem ob die Antwort richtig war
+    //Hier werden die Buttons angeklickt
     //button A
     @FXML
     public void buttonAAction() {
@@ -126,7 +126,7 @@ public class Controller implements Initializable{
     public void buttonNextAction(){
         if(qCount < questions.length - 1){      // solange die laufende Question-Number kleiner ist als die gesamtanzahl der Fragen -1
             qCount++;                           // soll die laufende Question-Number (qcount) um 1 erhöht werden
-            nextQuestion();                     // und die naechste Frage geladen werden
+            nextQuestion();
         }
         else if(qCount >= questions.length - 1){    // sollte die laufende Question-Number >= gesamtanzahl der Fragen-1 ist
             playerScore.setVisible(true);           // jzt kann Score angezeigt werden
@@ -134,8 +134,8 @@ public class Controller implements Initializable{
         }// Ausgabe: Player-Name, Score/Gesamtanzahl der Fragen.
     }
 
-    // Sobald der nextQuestion Button gedrückt wird werden alle Buttons auf die Standard Farben zurückgesetzt,
-    // wieder clickbar und die neuen Fragen werden geladen.
+    // Sobald der nextQuestion Button gedrückt wird werden alle Button-Farben auf null zurückgesetzt,
+    // wieder klickbar und die neuen Fragen werden geladen.
     public void nextQuestion(){
         buttonA.setStyle(null);     // Button-Farben werden wieder ausgegraut
         buttonB.setStyle(null);
@@ -145,11 +145,11 @@ public class Controller implements Initializable{
         isBTrue = false;
         isCTrue = false;
         isDTrue = false;
-        buttonA.setDisable(false);     // Antwort- Button kann wieder ausgewählt/ angeklickt werden
+        buttonA.setDisable(false);     // Antwort- Button kann wieder angeklickt werden
         buttonB.setDisable(false);
         buttonC.setDisable(false);
         buttonD.setDisable(false);
 
-        setText();
+        setText();                  // naechste Frage
     }
 }
